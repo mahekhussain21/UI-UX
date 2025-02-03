@@ -1,0 +1,25 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.cover-page {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+}
+
+.cover-page h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.cover-page p {
+    font-size: 1.5em;
+    margin-top: 20px;
+}
