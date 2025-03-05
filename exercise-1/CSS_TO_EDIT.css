@@ -1,0 +1,238 @@
+/* BODY AND SECTIONS */
+/* ----------------------------------------------------- */
+/* All body and section styling available here (except for the fonts, which are declared in the defaults+fonts.css). Some properties have already been declared */
+
+body {
+    padding: 40px 10%;
+    background-color: rgb(235, 235, 235) ;  
+}
+
+section {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+section > h2 {
+    text-align: center;
+    line-height: 1;
+    border-bottom: 1px solid black;
+    padding-bottom: 8px;
+}
+
+section > em {
+    display: block;
+    margin: 8px 0;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+section > div {
+    margin: 10px;
+}
+
+#s1 > div {background-color: #FFFF00;}
+#s2 > div {background-color: #CDEAC0;}
+#s3 > div {background-color: #FFFAE3;}
+#s4 > div {background-color: #FF5964;}
+#s5 > div {background-color: #B8F3FF;}
+#s6 > div {background-color: #B298DC;}
+#s7 > div {background-color: #BDC696;}
+
+
+
+/* SECTION 1 */
+/* ----------------------------------------------------- */
+
+#s1 span {
+    background-color: yellow ;
+    mix-blend-mode: difference ;
+    height: 30px;
+    margin-bottom: 2px;
+}
+
+#s1 >div:nth-of-type(1) span{
+    display: inline;
+}
+#s1 >div:nth-of-type(2) span{
+    display: inline-block;
+}
+#s1 >div:nth-of-type(3) span{
+    display: block;
+}
+#s1 >div:nth-of-type(4) span{
+    display: block;
+    height: auto;
+    text-align: center;
+}
+
+/* SECTION 2 */
+/* ----------------------------------------------------- */
+
+#s2 > div > span {
+    background-color: #CDEAC0;
+    mix-blend-mode: difference;  
+}
+
+#s2> div {
+    display: inline-block;
+  }
+
+#s2 >div:nth-of-type(1) span{
+    
+    display: block;
+}
+
+#s2 >div:nth-of-type(2) span{
+    width: 600px;
+    display: block;
+}
+
+#s2 >div:nth-of-type(3) span{
+    width: 600px;
+    display: block;
+    margin: auto;
+}
+
+#s2 >div:nth-of-type(4) span{
+    width: 100%;
+    display: block;
+}
+
+#s2 >div:nth-of-type(5) span{
+    width: 100vw;
+    display: block;
+}
+
+#s2 >div:nth-of-type(6) span{
+    width: 47%;
+    display: block;
+    width: 50%;
+}
+
+#s2 >div:nth-of-type(7) span{
+    width: 47%;
+    display: block;
+    width: 50vw;
+}
+
+#s2 >div:nth-of-type(8) span{
+    width: 47%;
+    display: block;
+    width: 50vw;
+    overflow: hidden ;
+}
+
+#s2 >div:nth-of-type(9) span{
+    width: 47%;
+    display: block;
+    width: 50vw;
+    overflow: auto;
+}
+
+
+/* SECTION 3 */
+/* ----------------------------------------------------- */
+
+#s3 {
+    font-size: 24px;
+    }
+
+#s3 >div:nth-of-type(2) span{
+    font-size: 15px;
+}
+
+#s3 >div:nth-of-type(3) span{
+    font-size: 1.5vw;
+}
+
+#s3 >div:nth-of-type(4) span{
+    font-size: 1em;
+}
+
+#s3 >div:nth-of-type(5) span{
+    font-size: 1rem;
+}
+
+/* SECTION 4 */
+/* ----------------------------------------------------- */
+
+#s4 > div > span {
+    margin: auto;
+    width: 50%; 
+}
+
+#s4 >div:nth-of-type(2) span{
+    margin-right: 0;
+}
+
+h3{
+    position: sticky;
+    top: 1rem;
+}
+
+h3 > div:nith-of-type(2){
+    background-color: blue;
+    top: 0;
+}
+
+/* SECTION 5 */
+/* ----------------------------------------------------- */
+#s5 > div > span {
+    position:static;
+    width: 22%; 
+}
+
+#s5 >div:nth-of-type(2) span{
+    position: relative;
+    right: 20px;
+    bottom: 20px;
+    mix-blend-mode: multiply;
+
+}
+
+#s5 >div:nth-of-type(3) span{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+
+}
+
+/* SECTION 6 */
+/* ----------------------------------------------------- */
+#s6 span {
+    position: relative;
+}
+
+#s6 > div > span {
+    width: 50%; 
+}
+
+#s6 > div:nth-of-type(2) {
+  right: 0;
+  bottom: 10px;
+  width: 20%;
+
+}
+
+#s6 > div:nth-of-type(3) {
+    position: absolute;
+    left: -40px;
+    mix-blend-mode: difference;
+    
+  }
+
+
+/* SECTION 7 */
+/* ----------------------------------------------------- */
+#s7 > div:nth-of-type(2) {
+    position: fixed;
+    left: 0;
+    top:0;
+    margin: 0;
+    
+  }
+
