@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click on the Threats</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .game-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            margin: auto;
+            background: url('image.png') no-repeat center center;
+            background-size: cover;
+        }
+        .threat {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .threat img {
+            width: 100%;
+            height: 100%;
+            animation: pulse 1.5s infinite ease-in-out;
+            transition: transform 0.3s ease-in-out;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .popup button {
+            background: #34c9a1;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Click on the threats</h2>
+    <div class="game-container">
+        <div class="threat" style="top: 75%; left: 60%;" data-id="1">
+            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/028.png" alt="Threat 1">
+        </div>
+        <div class="threat" style="top: 50%; left: 30%;" data-id="2">
+            <img src="https://pm1.aminoapps.com/7095/fbc1baa6524eaff3e14e2cf5a0e05b37f6e06bf1r1-894-894v2_uhq.jpg" alt="Threat 2">
+        </div>
+        <div class="threat" style="top: 55%; left: 50%;" data-id="3">
+            <img src="https://archives.bulbagarden.net/media/upload/thumb/8/83/0851Centiskorch.png/800px-0851Centiskorch.png" alt="Threat 3">
+        </div>
+        <div class="threat" style="top: 70%; left: 15%;" data-id="4">
+            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/332.png" alt="Threat 4">
+        </div>
+        <div class="threat" style="top: 25%; left: 55%;" data-id="5">
+            <img src="https://mrwallpaper.com/images/thumbnail/diglett-in-alola-form-pokemon-id1dexsry1u2klre.webp" alt="Threat 5">
+        </div>
+        <div class="threat" style="top: 40%; left: 80%;" data-id="6">
+            <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full//553.png" alt="Threat 6">
+        </div>
+    </div>
+    
+    <div id="popup" class="popup">
+        <h3>Mission Successful!</h3>
+        <button onclick="goToStoryPage()">Return to Story</button>
+    </div>
+
+    <script>
+        let clickedThreats = new Set();
+        let totalThreats = document.querySelectorAll('.threat').length;
+
+        document.querySelectorAll('.threat img').forEach(threat => {
+            threat.addEventListener('click', function() {
+                let parent = this.parentElement;
+                let id = parent.getAttribute('data-id');
+                
+                if (!clickedThreats.has(id)) {
+                    clickedThreats.add(id);
+                    this.style.transform = 'scale(2)'; // Double the size
+                    parent.style.pointerEvents = 'none'; // Disable clicking again
+                    checkMissionComplete();
+                }
+            });
+        });
+
+        function checkMissionComplete() {
+            if (clickedThreats.size === totalThreats) {
+                document.getElementById('popup').style.display = 'block';
+            }
+        }
+
+        function goToStoryPage() {
+            window.location.href = 'story.html'; // Replace with actual story page URL
+        }
+    </script>
+</body>
+</html>

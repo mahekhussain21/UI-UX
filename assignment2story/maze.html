@@ -1,0 +1,254 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Desert Maze Game</title>  
+    <style>  
+        body {  
+            display: flex;  
+            flex-direction: column;  
+            align-items: center;  
+            justify-content: center;  
+            height: 100vh;  
+            margin: 0;  
+            background-color: #222;  
+            font-family: Arial, sans-serif;  
+            color: white;  
+        }  
+          
+        #game-container {  
+            position: relative;  
+        }  
+          
+        #maze-canvas {  
+            background-color: #000;  
+            display: block;  
+            margin: 0 auto;  
+        }  
+          
+        .controls {  
+            margin-top: 20px;  
+            text-align: center;  
+        }  
+          
+        .controls h3 {  
+            margin-bottom: 10px;  
+        }  
+          
+        .button-row {  
+            display: flex;  
+            justify-content: center;  
+            margin-bottom: 10px;  
+        }  
+          
+        button {  
+            background-color: white;  
+            border: 2px solid #444;  
+            border-radius: 50%;  
+            padding: 10px 15px;  
+            margin: 0 5px;  
+            cursor: pointer;  
+            font-weight: bold;  
+        }  
+          
+        #regenerate {  
+            border-radius: 20px;  
+        }  
+          
+        button:hover {  
+            background-color: #ddd;  
+        }  
+          
+        @media (max-width: 600px) {  
+            #maze-canvas {  
+                width: 90vw;  
+                height: auto;  
+            }  
+        }  
+    </style>  
+</head>  
+<body>  
+    <div id="game-container">  
+        <canvas id="maze-canvas" width="500" height="500"></canvas>  
+    </div>  
+      
+    <div class="controls">  
+        <h3>Controls</h3>  
+        <div class="button-row">  
+            <button id="up">Up</button>  
+        </div>  
+        <div class="button-row">  
+            <button id="left">Left</button>  
+            <button id="down">Down</button>  
+            <button id="right">Right</button>  
+        </div>  
+        <div class="button-row">  
+            <button id="regenerate">Regenerate Maze</button>  
+        </div>  
+    </div>  
+
+    <div class="button-row"></div>
+        <button id="back-button">Click here to go back to the story</button>
+        <!-- <script>
+            document.getElementById('back-button').addEventListener('click', () => {
+                window.location.href = '2ndpg.html/#section-11'; // Redirects to section 11 of 2ndpg.html
+            });
+        </script> -->
+    </div>
+
+    <script>
+        document.getElementById('back-button').addEventListener('click', () => {
+            window.location.href = '2ndpg.html#section-11'; // Replace 'previous_page.html' with the desired URL
+        });
+    </script>
+  
+    <script>  
+        document.addEventListener('DOMContentLoaded', function() {  
+            const canvas = document.getElementById('maze-canvas');  
+            const ctx = canvas.getContext('2d');  
+              
+            // Maze structure as seen in the image  
+            // 0 = wall, 1 = path  
+            const mazeStructure = [  
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],  
+                [0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0],  
+                [0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0],  
+                [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0],  
+                [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0],  
+                [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],  
+                [0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],  
+                [0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0],  
+                [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0],  
+                [0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0],  
+                [0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],  
+                [0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0],  
+                [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0],  
+                [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0],  
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0],  
+                [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0],  
+                [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0],  
+                [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0],  
+                [0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0],  
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  
+            ];  
+              
+            const cellSize = 25;  
+              
+            // Player position  
+            let playerX = 1;  
+            let playerY = 1;  
+              
+            // End position (green square)  
+            const endX = 18;  
+            const endY = 18;  
+              
+            // Desert-themed colors  
+            const wallColor = '#8B4513'; // Brown for desert walls  
+            const pathColor = '#F5DEB3'; // Wheat color for sandy paths  
+            const playerColor = '#FF0000'; // Red player  
+            const endColor = '#00FF00'; // Green end marker  
+              
+            function drawMaze() {  
+                // Clear the canvas  
+                ctx.fillStyle = '#000';  
+                ctx.fillRect(0, 0, canvas.width, canvas.height);  
+                  
+                // Draw the maze  
+                for (let y = 0; y < mazeStructure.length; y++) {  
+                    for (let x = 0; x < mazeStructure[y].length; x++) {  
+                        if (mazeStructure[y][x] === 0) {  
+                            // Wall  
+                            ctx.fillStyle = wallColor;  
+                        } else {  
+                            // Path  
+                            ctx.fillStyle = pathColor;  
+                        }  
+                        ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);  
+                    }  
+                }  
+                  
+                // Draw end point  
+                ctx.fillStyle = endColor;  
+                ctx.fillRect(endX * cellSize, endY * cellSize, cellSize, cellSize);  
+                  
+                // Draw player  
+                ctx.fillStyle = playerColor;  
+                ctx.fillRect(playerX * cellSize, playerY * cellSize, cellSize, cellSize);  
+            }  
+              
+            function movePlayer(dx, dy) {  
+                const newX = playerX + dx;  
+                const newY = playerY + dy;  
+                  
+                // Check if the new position is valid  
+                if (newX >= 0 && newX < mazeStructure[0].length &&  
+                    newY >= 0 && newY < mazeStructure.length &&  
+                    mazeStructure[newY][newX] === 1) {  
+                      
+                    playerX = newX;  
+                    playerY = newY;  
+                      
+                    // Check if player reached the end  
+                    if (playerX === endX && playerY === endY) {  
+                        setTimeout(() => {  
+                            alert('Congratulations! You completed the maze!');  
+                            resetGame();  
+                        }, 100);  
+                    }  
+                }  
+                  
+                drawMaze();  
+            }  
+              
+            function resetGame() {  
+                playerX = 1;  
+                playerY = 1;  
+                drawMaze();  
+            }  
+              
+            // Event listeners for buttons  
+            document.getElementById('up').addEventListener('click', () => movePlayer(0, -1));  
+            document.getElementById('down').addEventListener('click', () => movePlayer(0, 1));  
+            document.getElementById('left').addEventListener('click', () => movePlayer(-1, 0));  
+            document.getElementById('right').addEventListener('click', () => movePlayer(1, 0));  
+            document.getElementById('regenerate').addEventListener('click', resetGame);  
+              
+            // Keyboard controls  
+            document.addEventListener('keydown', (e) => {  
+                switch(e.key) {  
+                    case 'ArrowUp':  
+                        movePlayer(0, -1);  
+                        break;  
+                    case 'ArrowDown':  
+                        movePlayer(0, 1);  
+                        break;  
+                    case 'ArrowLeft':  
+                        movePlayer(-1, 0);  
+                        break;  
+                    case 'ArrowRight':  
+                        movePlayer(1, 0);  
+                        break;  
+                }  
+            });  
+              
+            // Initial draw  
+            drawMaze();  
+              
+            // Make it responsive  
+            function resizeCanvas() {  
+                const container = document.getElementById('game-container');  
+                const maxWidth = Math.min(window.innerWidth * 0.9, 500);  
+                  
+                canvas.width = maxWidth;  
+                canvas.height = maxWidth;  
+                  
+                drawMaze();  
+            }  
+              
+            window.addEventListener('resize', resizeCanvas);  
+            resizeCanvas();  
+        });  
+    </script>  
+</body>  
+</html>  

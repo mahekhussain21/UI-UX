@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veer's Journey</title>
+    <link rel="stylesheet" href="2ndpg.css">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="2ndpg.js" defer></script>
+
+</head>
+<body>
+    <div class="story-container">
+        <header class="hero-section">
+            <h1>The Nameless Shall Not Rise</h1>
+        </header>
+
+        <audio id="background-music" autoplay loop>
+            <source src="aladinsong.mp3" type="audio/mpeg">
+        </audio>
+        
+
+        <main>
+            <!-- 20 Sections -->
+            <div class="section-container">
+                <section class="story-section" id="section-1" style="background-image: url('p1.png');">
+
+                    <div class="text-container" style="background-image: url('text_box_container.png');">
+                        <p class="paraA">The World of swarg and Pataal Lok </p>
+                        <p class="paraB">The sky above swarg was never dark. The celestial orbs, bound to the great wheels of the heavens, cast their eternal radiance upon the world above, yet their divine touch never graced Pataal Lok, the shadowed realm where the Nameless dwelled, unseen and forgotten.
+                        </p>
+                    </div>
+
+
+
+                    <!-- sample
+                    <div class="text-container">
+                        <div class="typewriter-container">
+                          <p class="paraA">The World of Swarg and Pataal Lok</p>
+                          <p class="paraB" id="typewriter-text"></p>
+                        </div>
+                      </div> -->
+
+
+
+
+                </section>
+
+                <section class="story-section" id="section-2" style="background-image: url('page4.png');">
+                    
+                    <div class="text-container" style="background-image: url('text_box_container.png');">
+                    <p class="paraB">Veer had grown up beneath this false sky, in the tunnels of Pataal Lok, where the air was thick with the scent of rust and recycled water. The ruling class, the Yamrajas, controlled everything—water, knowledge, even the right to a name. The Nameless were assigned numbers instead.
+                    </p>
+                </div>
+
+                </section>
+
+            
+                <section class="story-section" id="section-3" style="background-image: url('page5.png');">
+
+                    <div class="text-container" style="background-image: url('text_box_container.png');">
+                    <p class="paraB">A great cavern stretched before him, its walls towering like the ribs of some ancient beast. A stone bridge arched gracefully over a still pool, its waters reflecting the dim light that filtered through unseen crevices above. The steps leading down were worn smooth, as if countless feet had once walked this path, though no sign of life remained. Further ahead, the tunnel curved into a hollowed-out chamber, its entrance carved into a perfect spiral, leading downward into deeper darkness.
+                    </p>
+                    </div>
+
+                </section>
+
+                <section class="story-section" id="section-4" style="background-image: url('page6.png');">
+
+                    <div class="text-container" style="background-image: url('text_box_container.png');">
+                    <p class="paraB">Veer was Seven-Four-Two, a scavenger from the deep shafts, and he should have lived and died that way.
+                        But then he found the Codex of Raktbeej.
+                        It was buried beneath the sands of a forgotten chamber, hidden within the depths of Pataal Lok. The place was unlike any other Veer had seen—a vast underground expanse, where nature and time had sculpted a world beneath the surface.
+                        </p>
+                        </div>
+
+                </section>
+
+                <section class="story-section" id="section-5" style="background-image: url('bg5.jpg');">
+
+                    <div class="text-container" style="background-image: url('text_box_container.png');">
+                    <p class="paraB">And there, half-buried in the golden sand near the entrance of this cavern, lay the Codex. A stone tablet, covered in intricate carvings, its symbols whispering of a time long before the rule of the Yamrajas. Veer brushed away the dust with trembling fingers, revealing the knowledge that had been stolen from his people.
+                    </p>
+                    </div>
+
+
+                    <div class="image-container"></div>
+                        <img src="codex.png" alt="Codex" class="interactive-image pulse-animation" onclick="showTextContainer()">
+
+                        <style>
+                            .pulse-animation {
+                                animation: pulse 2s infinite;
+                            }
+
+                            @keyframes pulse {
+                                0% {
+                                    transform: scale(1);
+                                }
+                                50% {
+                                    transform: scale(1.2);
+                                }
+                                100% {
+                                    transform: scale(1);
+                                }
+                            }
+                        </style>
+                    </div>
+
+                    <div class="text-container hidden" style="background-image: url('text_box_container.png');">
+                        <p class="paraB">The texts spoke of a world where the Nameless had ruled, where water was not rationed through biometric locks, and where the Trials—the brutal competition that selected "worthy" Nameless for elevation—were nothing but a lie.
+                           
+                        </p>
+                    </div>
+
+                    <script>
+                        function showTextContainer() {
+                            const textContainer = document.querySelector('.text-container');
+                            textContainer.classList.toggle('hidden');
+                            const image = document.querySelector('.interactive-image');
+                            image.classList.toggle('hidden');
+                            const imageContainer = document.querySelector('.image-container');
+                            imageContainer.classList.toggle('hidden');
+                            const textContainer2 = document.querySelector('.text-container.hidden');
+                            if (textContainer2) {
+                                textContainer2.classList.toggle('hidden');
+                            }
+                            const textContainer3 = document.querySelector('.text-container.hidden');
+                            if (textContainer3) {
+                                textContainer3.classList.toggle('hidden');
+                            }
+                            const textContainer4 = document.querySelector('.text-container.hidden');
+                            if (textContainer4) {
+                                textContainer4.classList.toggle('hidden');
+                            }
+                            const textContainer5 = document.querySelector('.text-container.hidden');
+                            if (textContainer5) {
+                                textContainer5.classList.toggle('hidden');
+                            }
+                            const textContainer6 = document.querySelector('.text-container.hidden');
+                            if (textContainer6) {
+                                textContainer6.classList.toggle('hidden');
+                            }
+                            
+                        }
+                    </script>
+
+                    <style>
+                        .interactive-image {
+                            width: 150px;
+                            height: auto;
+                            cursor: pointer;
+                            transition: transform 0.3s ease-in-out;
+                        }
+
+                        .interactive-image:hover {
+                            transform: scale(1.2);
+                        }
+
+                        .text-container.hidden {
+                            display: none;
+                        }
+
+                        .text-container {
+                            display: block;
+                            padding: 20px;
+                            border-radius: 10px;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                        }
+                    </style>
+
+                </section>
+
+                <section class="story-section" id="section-7" style="background-image: url('bg7.jpg');">
+
+                    <div class="text-container" style="background-image: url('text_box_container.png');">
+                    <p class="paraB"> He should have burned it.
+                        Instead, carried it along with him. 
+                        The Trials of Ascendancy were held once every decade. The Nameless believed that the winners would be granted status, wealth, and a place among the Yamrajs. In reality, no one ever saw the winners again. Some whispered that they were executed, others believed they were used in experiments. But the thirst for freedom was stronger than fear.
+                    </p>
+                    </div>
+
+                </section>
+                
+                <section class="story-section" id="section-8" style="background-image: url('page9.png');">
+
+                    <div class="text-container" style="background-image: url('text_box_container.png');">
+                    <p class="paraB">The Trial grounds were an arena carved into the desert’s heart. Towering monoliths, made of sand-glass and reinforced steel, stretched into the sky, forming a labyrinth designed to test intelligence, endurance, and obedience. The last challenge was always the same—The Offering.
+                        A Nameless must prove loyalty by kneeling before the Yamraj High Lords and pledging eternal service. Refusal meant death.
+                        </p>
+                        </div>
+
+                </section>
+
+                <section class="story-section" id="section-9" style="background-image: url('page10.png');">
+                    
+                    <p class="paraA">Help Veer reach the lords!</p>   
+                
+                </section>
+            </div>
+
+
+            <div class="section-container swiper mySwiper" id="sc-2">
+
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide" id="section-10" style="background-image: url('page11.png');">
+                        <p class="paraA">Trial 1: the maze</p>
+                        <button id="play-now-button" onclick="window.location.href='maze.html';">Play Now</button>
+                    </div>
+
+
+                    <div class="swiper-slide " id="section-11" style="background-image: url('page13.png');">
+                        <div class="text-container" style="background-image: url('text_box_container.png');">
+                        <p class="paraA"> Trial cleared.</p>
+                            <p class="paraA">The next trial begins—Desert Attack</p>
+                        <p class="paraB">Find the desert attackers, click on them, so that veer can dodge them.
+                        </p>
+                        </div>
+                        <button id="play-now-button" onclick="window.location.href='desert_threats.html';">Play Now</button>
+                    </div>
+
+
+                    <div class="swiper-slide" id="section-12" style="background-image: url('bg12.jpg');">
+                        <p class="paraC">Trails completed</p>
+
+                    </div>
+
+                    <div class="swiper-slide" id="section-13" style="background-image: url('page16.png');">
+                        <p class="paraC">The Final Confrontation :
+                            <br> 
+                            The final trial was "The Offering".</p>
+                    </div>
+
+                    <div class="swiper-slide" id="section-14" style="background-image: url('bg14.jpg');">
+                    
+                        <div class="text-container" style="background-image: url('text_box_container.png');">
+                        <p class="paraB">Veer refused to kneel<br>
+                            Instead he pulled out the codex and showed the Yamrajas.<br>
+                            The lords were startled. Gasps turned into shouts as hidden truths unraveled before their eyes. The Yamrajs had stolen everything—water, power, even their names.
+                            
+                        </p>
+                        </div>
+                    </div>
+
+
+                    <div class="swiper-slide" id="section-15" style="background-image: url('https://media1.tenor.com/m/Rg0TmJd8tXwAAAAC/light-moon-dancing.gif');">
+
+                        <div class="text-container" style="background-image: url('text_box_container.png');">
+                         <p class="paraB">A beam of light shot through the chamber as the High Lords erupted into argument. Some shouted for Veer’s execution, others hesitated, seeing the undeniable truth before them. The walls of the amphitheater seemed to shake as the weight of history crashed down upon them.</p>
+                        </div>
+                    </div>
+
+                    <!-- <div class="swiper-slide"></div> -->
+
+                 </div>
+
+             </div> 
+             
+             <div class="section-container" id="sc-3">
+                <section class="story-section" id="section-16" style="background-image: url('https://i.pinimg.com/originals/17/08/90/170890e64f751e6c7926f851719d4523.gif');">
+                   
+                </section>
+
+
+                <section class="story-section" id="section-17" style="background-image: url('bg17.jpg');">
+                    <p class="paraC">Veer was in the underground city</p>
+                </section>
+
+
+                <section class="story-section" id="section-18" style="background-image: url('page20.png');">
+                    
+                    <div class="text-container" style="background-image: url('text_box_container.png');">
+                    <p class="paraB">
+
+                        It was just a dream.
+                        He was back in the tunnels of Pataal Lok.
+                        Had it all been a dream?
+                        He touched his tunic, but there was no holo-slate. No Codex. Just the familiar weight of a life spent in the shadows.
+                        Yet, something had changed.
+            
+                        
+                        </p>
+                        </div>
+                </section>
+
+
+                <section class="story-section" id="section-19" style="background-image: url('bg19.jpg');">
+                    <p class="paraC typewriter">The dream had left behind 
+                        <br>a whisper of truth—a truth 
+                        <br>that could ignite a revolution.
+                        <br>that could not be erased...</p>
+
+                    <style>
+                        .typewriter {
+                        
+                    text-overflow: ellipsis;
+                        white-space: nowrap;
+                            border-right: 2px solid #000;
+                            white-space: nowrap;
+                            margin: 0 auto;
+                            letter-spacing: 2px;
+                            animation: typing 3s steps(40, end), blink-caret 0.5s step-end infinite;
+                        }
+
+                        @keyframes typing {
+                            from {
+                                width: 0;
+                            }
+                            to {
+                                width: 100%;
+                            }
+                        }
+
+                        @keyframes blink-caret {
+                            from, to {
+                                border-color: transparent;
+                            }
+                            50% {
+                                border-color: black;
+                            }
+                        }
+                    </style>
+                </section>
+
+
+                <section class="story-section restart-section" id="section-20" style="background-image: url('page21.png');">
+                    <button id="restart-story" onclick="window.scrollTo(0, 0); location.reload();">Click to re-live the story</button>
+            
+                </section>
+            </div>
+
+         </main>
+    </div>
+
+</body>
+</html>

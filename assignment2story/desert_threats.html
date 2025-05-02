@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click on the Threats</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .game-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            margin: auto;
+            background: url('image.png') no-repeat center center;
+            background-size: cover;
+        }
+        .threat {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #34c9a1;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .threat {
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .popup button {
+            background: #34c9a1;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Click on the threats</h2>
+
+    <style>
+        body {
+            background: url('pg14.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+    <div class="game-container">
+        <div class="threat" style="top: 115%; left: 80%;" data-id="1">
+            <img src="1.png" alt="Threat 1" style="width: 160px; height: 160px; border-radius: 50%;">
+        </div>
+        <div class="threat" style="top: 30%; left: 10%;" data-id="2">
+            <img src="2.png" alt="Threat 2" style="width: 160px; height: 160px; border-radius: 50%;">
+        </div>
+        <div class="threat" style="top: 55%; left: 50%;" data-id="3">
+            <img src="3.png" alt="Threat 3" style="width: 160px; height: 160px; border-radius: 50%;">
+        </div>
+        <div class="threat" style="top: 90%; left: -20%;" data-id="4">
+            <img src="4.png" alt="Threat 4" style="width: 160px; height: 160px; border-radius: 50%;">
+        </div>
+        <div class="threat" style="top: 15%; left: 110%;" data-id="5">
+            <img src="5.png" alt="Threat 5" style="width: 160px; height: 160px; border-radius: 50%;">
+        </div>
+        <div class="threat" style="top: 40%; left: 130%;" data-id="6">
+            <img src="6.png" alt="Threat 6" style="width: 160px; height: 160px; border-radius: 50%;">
+        </div>
+    </div>
+    
+    <div id="popup" class="popup">
+        <h3>Mission Successful!</h3>
+        <button onclick="goToStoryPage()">Return to Story</button>
+    </div>
+
+    
+
+    <script>
+        let clickedThreats = new Set();
+        let totalThreats = document.querySelectorAll('.threat').length;
+
+        document.querySelectorAll('.threat').forEach(threat => {
+            threat.addEventListener('click', function() {
+                let id = this.getAttribute('data-id');
+                clickedThreats.add(id);
+                this.style.backgroundColor = '#1a7f64'; // Change color when clicked
+                this.style.pointerEvents = 'none'; // Disable clicking again
+                checkMissionComplete();
+            });
+        });
+
+        function checkMissionComplete() {
+            if (clickedThreats.size === totalThreats) {
+                document.getElementById('popup').style.display = 'block';
+            }
+        }
+
+        function goToStoryPage() {
+            window.location.href = '2ndpg.html#section-12'; // Replace with actual story page URL
+        }
+    </script>
+</body>
+</html>
